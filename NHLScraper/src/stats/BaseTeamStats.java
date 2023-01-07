@@ -1,6 +1,7 @@
 package stats;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
@@ -51,7 +52,7 @@ public class BaseTeamStats {
     private void smoothStats() {
         averagePlayerTimeOnIce = averagePlayerTimeOnIce / teamMembers.size();
         totalShootingPercentage =
-                totalShootingPercentage.divide(new BigDecimal(teamMembers.size()));
+                totalShootingPercentage.divide(new BigDecimal(teamMembers.size()), 2, RoundingMode.HALF_UP);
     }
 
     private int totalGoals;
