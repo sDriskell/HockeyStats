@@ -12,7 +12,7 @@ import process.StatProcessor;
 public class BaseTeamStats {
     private static final Logger logger = LogManager.getLogger(BaseTeamStats.class);
 
-    private List<PlayerStats> teamMembers;
+    private List<BasePlayerStats> teamMembers;
     private String teamName;
 
     /**
@@ -21,7 +21,7 @@ public class BaseTeamStats {
      * @param argTeamName    is a String name of the team
      * @param argTeamMembers is a list of team members on the team
      */
-    public BaseTeamStats(String argTeamName, List<PlayerStats> argTeamMembers) {
+    public BaseTeamStats(String argTeamName, List<BasePlayerStats> argTeamMembers) {
         logger.info("Generating team statistics.");
         teamName = argTeamName;
         teamMembers = argTeamMembers;
@@ -33,7 +33,7 @@ public class BaseTeamStats {
      * Creates all the total values of the team stats
      */
     private void tallyTeamStats() {
-        for (PlayerStats player : teamMembers) {
+        for (BasePlayerStats player : teamMembers) {
             tallyScoringStats(player);
             tallyPointStats(player);
             tallyPhysicalityStats(player);
@@ -68,7 +68,7 @@ public class BaseTeamStats {
      * 
      * @param player is Player object containing stats
      */
-    private void tallyScoringStats(PlayerStats player) {
+    private void tallyScoringStats(BasePlayerStats player) {
         totalGoals += player.getGoals();
         totalAssists += player.getAssists();
         totalShotsOnGoal += player.getShotsOnGoal();
@@ -87,7 +87,7 @@ public class BaseTeamStats {
      * 
      * @param player is Player object containing stats
      */
-    private void tallyPointStats(PlayerStats player) {
+    private void tallyPointStats(BasePlayerStats player) {
         totalPlusOrMinus += player.getPlusOrMinus();
         totalPoints += player.getPoints();
         totalPointsShared = totalPointsShared.add(player.getPointsShared());
@@ -103,7 +103,7 @@ public class BaseTeamStats {
      * 
      * @param player is Player object containing stats
      */
-    private void tallyPhysicalityStats(PlayerStats player) {
+    private void tallyPhysicalityStats(BasePlayerStats player) {
         totalShootingPercentage = totalShootingPercentage.add(player.getShootingPercentage());
         totalBlocks += player.getBlocks();
         totalHits += player.getHits();
@@ -118,7 +118,7 @@ public class BaseTeamStats {
      * 
      * @param player is Player object containing stats
      */
-    private void tallyTimeOnIce(PlayerStats player) {
+    private void tallyTimeOnIce(BasePlayerStats player) {
         totalTimeOnIce += player.getTimeOnIce();
         averagePlayerTimeOnIce += player.getAverageTimeOnIce();
     }
@@ -131,12 +131,12 @@ public class BaseTeamStats {
      * 
      * @param player is Player object containing stats
      */
-    private void tallyFaceOffStats(PlayerStats player) {
+    private void tallyFaceOffStats(BasePlayerStats player) {
         faceOffPercentage = faceOffPercentage.add(player.getFaceOffPercentage());
         faceOffWins += player.getFaceOffWins();
     }
 
-    public List<PlayerStats> getTeamMembers() {
+    public List<BasePlayerStats> getTeamMembers() {
         return teamMembers;
     }
 

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerStats {
+public class BasePlayerStats {
     private final int rank;
     
     private final String name;
@@ -40,7 +40,7 @@ public class PlayerStats {
     private final int faceOffLosses;  
     private final BigDecimal faceOffPercentage;
 
-    public PlayerStats(List<String> argNhlPlayerStats) {
+    public BasePlayerStats(List<String> argNhlPlayerStats) {
         rank = Integer.parseInt(argNhlPlayerStats.get(0));
         
         name = trimNameString(argNhlPlayerStats.get(1));

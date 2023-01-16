@@ -9,8 +9,8 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.NhlScraper;
-import stats.PlayerStats;
+import main.NhlApp;
+import stats.BasePlayerStats;
 import stats.LeagueStats;
 
 /**
@@ -23,9 +23,10 @@ import stats.LeagueStats;
 public class StatProcessor {
     private static final Logger logger = LogManager.getLogger(StatProcessor.class);
 
-    private List<List<String>> rawAllPlayerStats;
+    private List<List<String>> rawSkatersBasicStats;
+    private List<List<String>> rawTeamStandings;
 
-    private List<PlayerStats> playerObjects = new ArrayList<>();
+    private List<BasePlayerStats> playerObjects = new ArrayList<>();
     private List<String> playerStatsHeader;
     private LeagueStats leagueStats;
     
@@ -38,22 +39,23 @@ public class StatProcessor {
      * @throws IOException
      */
     public StatProcessor() throws IOException {
-        logger.info("Processing NHL stats file.");
-        rawAllPlayerStats = new ArrayList<>();
+        logger.info("Processing NHL skater basic stats file.");
         ProcessCsvFile processCsvFile = new ProcessCsvFile();
-        rawAllPlayerStats = processCsvFile.processCsvFile(rawAllPlayerStats, "nhlstats.csv");
+        
+        rawSkatersBasicStats = new ArrayList<>();
+        rawSkatersBasicStats = processCsvFile.processCsvFile(rawSkatersBasicStats, "nhlSkatersBasic.csv");
 
         logger.info("Populating players and stats.");
-        rawAllPlayerStats.remove(0);  // Excess header row removed
-        playerStatsHeader = rawAllPlayerStats.remove(0); // Pops off header row
-        createPlayerObjects(rawAllPlayerStats);
+        rawSkatersBasicStats.remove(0);  // Excess header row removed
+        playerStatsHeader = rawSkatersBasicStats.remove(0); // Pops off header row and retains
+        createPlayerObjects(rawSkatersBasicStats);
+        
+        logger.info("Processing NHL team standings.");
+        rawTeamStandings = processCsvFile.processCsvFile(rawSkatersBasicStats, "nhlTeamStandings.csv");
+        rawTeamStandings.remove(0); // Pop off header
         
         logger.info("Assigning players to teams.");
         leagueStats = new LeagueStats(playerObjects);
-        
-        logger.info("Processing NHL draft team.");
-        rawDraftPlayers = new ArrayList<>();
-        rawDraftPlayers = processCsvFile.processCsvFile(rawDraftPlayers, "nhldraft.csv");
     }
  
     /**
@@ -62,8 +64,8 @@ public class StatProcessor {
      * @param argNhlPlayerStats is a list of player information
      * @return NhlPlayerStats object with the arguments values added
      */
-    private PlayerStats createPlayerStatObject(List<String> argNhlPlayerStats) {
-        return new PlayerStats(argNhlPlayerStats);
+    private BasePlayerStats createPlayerStatObject(List<String> argNhlPlayerStats) {
+        return new BasePlayerStats(argNhlPlayerStats);
     }
 
     /**

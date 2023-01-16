@@ -11,9 +11,10 @@ import org.apache.logging.log4j.Logger;
 
 import main.NhlApp;
 import stats.refined.RefinedTeamStats;
+import stats.BasePlayerStats;
 
-public class LeagueStats {
-    private static final Logger logger = LogManager.getLogger(LeagueStats.class);
+public class SkaterStats {
+    private static final Logger logger = LogManager.getLogger(SkaterStats.class);
 
     private Map<String, List<BasePlayerStats>> baseTeams;
     private List<BasePlayerStats> playerObjects;
@@ -27,7 +28,7 @@ public class LeagueStats {
      * 
      * @param argNhlPlayerObjects a list of player objects with stats to be compiled
      */
-    public LeagueStats(List<BasePlayerStats> argNhlPlayerObjects) {
+    public SkaterStats(List<BasePlayerStats> argNhlPlayerObjects) {
         playerObjects = argNhlPlayerObjects;
         compileTeams();
         createNhlTeamStats();
@@ -77,6 +78,12 @@ public class LeagueStats {
 
         for (BaseTeamStats baseTeam : baseTeamStats) {
             refinedTeamStats.add(new RefinedTeamStats(baseTeam));
+        }
+
+        for (RefinedTeamStats refinedTeam : refinedTeamStats) {
+            logger.info("Team:\t{}\tAverage:\t{}", refinedTeam,
+                    refinedTeam.getGoals().getAveragePlayerGoals());
+            logger.info("\t\t\tMedian: \t{}", refinedTeam.getGoals().getMedianPlayerGoals());
         }
     }
 

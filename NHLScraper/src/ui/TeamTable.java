@@ -11,7 +11,7 @@ import javax.swing.JTable;
 
 import process.StatProcessor;
 import stats.LeagueStats;
-import stats.PlayerStats;
+import stats.BasePlayerStats;
 import stats.BaseTeamStats;
 
 public class TeamTable extends JFrame implements ActionListener {

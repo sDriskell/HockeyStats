@@ -11,7 +11,7 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import main.NhlScraper;
+import main.NhlApp;
 
 public class ProcessCsvFile {
     private static final Logger logger = LogManager.getLogger(ProcessCsvFile.class);
@@ -37,9 +37,9 @@ public class ProcessCsvFile {
         logger.info("Ingesting csv file -> " + argCsvFileName);
         List<List<String>> tempStatsHolder = new ArrayList<>();
 
-        try (BufferedReader allPlayers = new BufferedReader(new FileReader(argCsvFileName))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(argCsvFileName))) {
             String line;
-            while ((line = allPlayers.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(",");
                 tempStatsHolder.add(Arrays.asList(values));
             }
