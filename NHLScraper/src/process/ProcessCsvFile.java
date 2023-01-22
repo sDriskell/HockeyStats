@@ -40,7 +40,7 @@ public class ProcessCsvFile {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(argCsvFileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                String[] values = line.split(",");
+                String[] values = line.split(",", -1);
                 tempStatsHolder.add(Arrays.asList(values));
             }
         }

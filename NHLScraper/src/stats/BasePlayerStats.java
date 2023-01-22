@@ -4,79 +4,91 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Statistical data fetched from the basic player stats page from Hockey
+ * Reference.
+ * 
+ * @author sldri
+ *
+ */
 public class BasePlayerStats {
-    private final int rank;
-    
     private final String name;
     private final int age;
     private final String team;
     private final String position;
     private final int gamesPlayed;
-    
+
     private final int goals;
     private final int assists;
     private final int points;
     private final int plusOrMinus;
     private final int penaltyInMinutes;
-    
+
     private final BigDecimal pointsShared;
     private final int evenStrengthGoals;
     private final int powerPlayGoals;
     private final int shortHandGoals;
     private final int gameWinningGoals;
-    
+
     private final int evenStrengthAssists;
     private final int powerPlayAssists;
     private final int shortHandAssists;
     private final int shotsOnGoal;
     private final BigDecimal shootingPercentage;
-    
+
     private final int timeOnIce;
     private final int averageTimeOnIce;
     private final int blocks;
     private final int hits;
-    
+
     private final int faceOffWins;
-    private final int faceOffLosses;  
+    private final int faceOffLosses;
     private final BigDecimal faceOffPercentage;
 
+    /**
+     * Basic Player Constructor
+     * 
+     * @param argNhlPlayerStats
+     */
     public BasePlayerStats(List<String> argNhlPlayerStats) {
-        rank = Integer.parseInt(argNhlPlayerStats.get(0));
-        
-        name = trimNameString(argNhlPlayerStats.get(1));
-        age = Integer.parseInt(argNhlPlayerStats.get(2));
-        team = argNhlPlayerStats.get(3);
-        position = argNhlPlayerStats.get(4);
-        gamesPlayed = Integer.parseInt(argNhlPlayerStats.get(5));
-        
-        goals = Integer.parseInt(argNhlPlayerStats.get(6));
-        assists = Integer.parseInt(argNhlPlayerStats.get(7));
-        points = Integer.parseInt(argNhlPlayerStats.get(8));
-        plusOrMinus = Integer.parseInt(argNhlPlayerStats.get(9));
-        penaltyInMinutes = Integer.parseInt(argNhlPlayerStats.get(10));
-        
-        pointsShared = BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(11)));
-        evenStrengthGoals = Integer.parseInt(argNhlPlayerStats.get(12));
-        powerPlayGoals = Integer.parseInt(argNhlPlayerStats.get(13));
-        shortHandGoals = Integer.parseInt(argNhlPlayerStats.get(14));
-        gameWinningGoals = Integer.parseInt(argNhlPlayerStats.get(15));
-        
-        evenStrengthAssists = Integer.parseInt(argNhlPlayerStats.get(16));
-        powerPlayAssists = Integer.parseInt(argNhlPlayerStats.get(17));
-        shortHandAssists = Integer.parseInt(argNhlPlayerStats.get(18));
-        shotsOnGoal = Integer.parseInt(argNhlPlayerStats.get(19));
-        shootingPercentage = "".equals(argNhlPlayerStats.get(20)) ? BigDecimal.ZERO
-                : BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(20)));
-        
-        timeOnIce = Integer.parseInt(argNhlPlayerStats.get(21));
-        averageTimeOnIce = averageTimeOnIce();
-        blocks = Integer.parseInt(argNhlPlayerStats.get(23));
-        hits = Integer.parseInt(argNhlPlayerStats.get(24));
-        
-        faceOffWins = Integer.parseInt(argNhlPlayerStats.get(25));
-        faceOffLosses = Integer.parseInt(argNhlPlayerStats.get(26));
-        faceOffPercentage = "".equals(argNhlPlayerStats.get(27)) ? BigDecimal.ZERO:
-            BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(27)));
+        // HEADER:
+        // Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,PS,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,BLK,HIT,FOW,FOL,FO%,-9999
+        // Sample:
+        // [Player_Name],31,STL,C,46,10,8,18,0,10,1.7,10,0,0,1,6,0,2,61,16.4,652,14:11,46,142,219,187,53.9,
+        name = trimNameString(argNhlPlayerStats.get(0));
+        age = Integer.parseInt(argNhlPlayerStats.get(1));
+        team = argNhlPlayerStats.get(2);
+        position = argNhlPlayerStats.get(3);
+        gamesPlayed = Integer.parseInt(argNhlPlayerStats.get(4));
+
+        goals = Integer.parseInt(argNhlPlayerStats.get(5));
+        assists = Integer.parseInt(argNhlPlayerStats.get(6));
+        points = Integer.parseInt(argNhlPlayerStats.get(7));
+        plusOrMinus = Integer.parseInt(argNhlPlayerStats.get(8));
+        penaltyInMinutes = Integer.parseInt(argNhlPlayerStats.get(9));
+
+        pointsShared = BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(10)));
+        evenStrengthGoals = Integer.parseInt(argNhlPlayerStats.get(11));
+        powerPlayGoals = Integer.parseInt(argNhlPlayerStats.get(12));
+        shortHandGoals = Integer.parseInt(argNhlPlayerStats.get(13));
+        gameWinningGoals = Integer.parseInt(argNhlPlayerStats.get(14));
+
+        evenStrengthAssists = Integer.parseInt(argNhlPlayerStats.get(15));
+        powerPlayAssists = Integer.parseInt(argNhlPlayerStats.get(16));
+        shortHandAssists = Integer.parseInt(argNhlPlayerStats.get(17));
+        shotsOnGoal = Integer.parseInt(argNhlPlayerStats.get(18));
+        shootingPercentage = "".equals(argNhlPlayerStats.get(19)) ? BigDecimal.ZERO
+                : BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(19)));
+
+        timeOnIce = Integer.parseInt(argNhlPlayerStats.get(20));
+        averageTimeOnIce = averageTimeOnIce();  // Replaces index 21
+        blocks = Integer.parseInt(argNhlPlayerStats.get(22));
+        hits = Integer.parseInt(argNhlPlayerStats.get(23));
+
+        faceOffWins = Integer.parseInt(argNhlPlayerStats.get(24));
+        faceOffLosses = Integer.parseInt(argNhlPlayerStats.get(25));
+        faceOffPercentage = "".equals(argNhlPlayerStats.get(26)) ? BigDecimal.ZERO
+                : BigDecimal.valueOf(Float.parseFloat(argNhlPlayerStats.get(26)));
     }
 
     /**
@@ -88,22 +100,18 @@ public class BasePlayerStats {
      */
     private String trimNameString(String argName) {
         StringBuilder tempNameString = new StringBuilder();
-        
+
         for (int i = 0; i < argName.length(); i++) {
             if (argName.charAt(i) == '\\') {
                 break;
             }
             tempNameString.append(argName.charAt(i));
-        }    
+        }
         return tempNameString.toString();
     }
-    
+
     private int averageTimeOnIce() {
         return timeOnIce / gamesPlayed;
-    }
-
-    public int getRank() {
-        return rank;
     }
 
     public int getAge() {
@@ -209,7 +217,7 @@ public class BasePlayerStats {
     public BigDecimal getFaceOffPercentage() {
         return faceOffPercentage;
     }
-    
+
     @Override
     public String toString() {
         return name;
