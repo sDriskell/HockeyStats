@@ -47,7 +47,6 @@ public class StatProcessor {
 
         logger.info("Populating players and stats.");
         rawSkatersBasicStats.remove(0);  // Excess header row removed
-        playerStatsHeader = rawSkatersBasicStats.remove(0); // Pops off header row and retains
         createPlayerObjects(rawSkatersBasicStats);
         
         logger.info("Processing NHL team standings.");
