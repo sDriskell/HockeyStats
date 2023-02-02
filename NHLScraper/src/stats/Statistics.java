@@ -1,6 +1,7 @@
 package stats;
 
 public enum Statistics {
+    /* Basic Skater Statistics */
     GOALS("goals"),
     ASSISTS("assists"),
     POINTS("points"),
@@ -26,6 +27,10 @@ public enum Statistics {
     FACE_OFF_WINS("face off wins"),
     FACE_OFF_LOSSES("face off losses"),
     FACE_OFF_PERCENTAGE("face off percentage");
+    
+    /* Advanced Skater Statistics */
+    /* Goalie Statistics */
+    /* Team Standings */
     
     Statistics(String statType) {
         this.statistic = statType;

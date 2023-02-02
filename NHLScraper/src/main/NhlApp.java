@@ -5,8 +5,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 
-import process.StatProcessor;
-import ui.ControllerFrame;
+import process.Processor;
 
 /**
  * Simple NHL tool to visualize statistical data from Hockey-Reference.com.
@@ -18,6 +17,6 @@ public class NhlApp {
 
     public static void main(String... args) throws IOException {
         logger.info("Starting stats processor object.");
-        ControllerFrame controllerFrame = new ControllerFrame(new StatProcessor());
+        Processor statProcessor = new Processor();
     }
 }

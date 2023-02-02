@@ -7,12 +7,32 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import process.StatProcessor;
-
 public class BaseTeamStats {
     private static final Logger logger = LogManager.getLogger(BaseTeamStats.class);
 
-    private List<BasePlayerStats> teamMembers;
+    private int totalGoals;
+    private int totalAssists;
+    private int totalShotsOnGoal;
+    private int totalPowerPlayAssists;
+    private int totalPowerPlayGoals;
+    private int totalEvenStrengthAssists;
+    private int totalEvenStrengthGoals;
+    
+    private int totalPlusOrMinus;
+    private int totalPoints;
+    private BigDecimal totalPointsShared = BigDecimal.ZERO;
+    
+    private int totalBlocks;
+    private int totalHits;
+    private int totalPenaltyInMinutes;
+    private BigDecimal totalShootingPercentage = BigDecimal.ZERO;
+    
+    private int totalTimeOnIce;
+    private int averagePlayerTimeOnIce;
+    private BigDecimal faceOffPercentage = BigDecimal.ZERO;
+    private int faceOffWins;
+    
+    private List<BasicPlayerStats> teamMembers;
     private String teamName;
 
     /**
@@ -21,7 +41,7 @@ public class BaseTeamStats {
      * @param argTeamName    is a String name of the team
      * @param argTeamMembers is a list of team members on the team
      */
-    public BaseTeamStats(String argTeamName, List<BasePlayerStats> argTeamMembers) {
+    public BaseTeamStats(String argTeamName, List<BasicPlayerStats> argTeamMembers) {
         logger.info("Generating team statistics.");
         teamName = argTeamName;
         teamMembers = argTeamMembers;
@@ -33,12 +53,28 @@ public class BaseTeamStats {
      * Creates all the total values of the team stats
      */
     private void tallyTeamStats() {
-        for (BasePlayerStats player : teamMembers) {
-            tallyScoringStats(player);
-            tallyPointStats(player);
-            tallyPhysicalityStats(player);
-            tallyTimeOnIce(player);
-            tallyFaceOffStats(player);
+        for (BasicPlayerStats player : teamMembers) {
+            totalGoals += player.getGoals();
+            totalAssists += player.getAssists();
+            totalShotsOnGoal += player.getShotsOnGoal();
+            totalPowerPlayAssists += player.getPowerPlayAssists();
+            totalPowerPlayGoals += player.getPowerPlayGoals();
+            totalEvenStrengthAssists += player.getEvenStrengthAssists();
+            totalEvenStrengthGoals += player.getEvenStrengthGoals();
+            
+            totalPlusOrMinus += player.getPlusOrMinus();
+            totalPoints += player.getPoints();
+            totalPointsShared = totalPointsShared.add(player.getPointsShared());
+            
+            totalShootingPercentage = totalShootingPercentage.add(player.getShootingPercentage());
+            totalBlocks += player.getBlocks();
+            totalHits += player.getHits();
+            totalPenaltyInMinutes += player.getPenaltyInMinutes();
+            
+            totalTimeOnIce += player.getTimeOnIce();
+            averagePlayerTimeOnIce += player.getAverageTimeOnIce();
+            faceOffPercentage = faceOffPercentage.add(player.getFaceOffPercentage());
+            faceOffWins += player.getFaceOffWins();
         }
 
         // Smooth two stat fields over so they're an appropriate percentage
@@ -55,88 +91,7 @@ public class BaseTeamStats {
                 totalShootingPercentage.divide(new BigDecimal(teamMembers.size()), 2, RoundingMode.HALF_UP);
     }
 
-    private int totalGoals;
-    private int totalAssists;
-    private int totalShotsOnGoal;
-    private int totalPowerPlayAssists;
-    private int totalPowerPlayGoals;
-    private int totalEvenStrengthAssists;
-    private int totalEvenStrengthGoals;
-
-    /**
-     * Totals scoring related stats for team
-     * 
-     * @param player is Player object containing stats
-     */
-    private void tallyScoringStats(BasePlayerStats player) {
-        totalGoals += player.getGoals();
-        totalAssists += player.getAssists();
-        totalShotsOnGoal += player.getShotsOnGoal();
-        totalPowerPlayAssists += player.getPowerPlayAssists();
-        totalPowerPlayGoals += player.getPowerPlayGoals();
-        totalEvenStrengthAssists += player.getEvenStrengthAssists();
-        totalEvenStrengthGoals += player.getEvenStrengthGoals();
-    }
-
-    private int totalPlusOrMinus;
-    private int totalPoints;
-    private BigDecimal totalPointsShared = BigDecimal.ZERO;
-
-    /**
-     * Totals points related stats for players on a team.
-     * 
-     * @param player is Player object containing stats
-     */
-    private void tallyPointStats(BasePlayerStats player) {
-        totalPlusOrMinus += player.getPlusOrMinus();
-        totalPoints += player.getPoints();
-        totalPointsShared = totalPointsShared.add(player.getPointsShared());
-    }
-
-    private int totalBlocks;
-    private int totalHits;
-    private int totalPenaltyInMinutes;
-    private BigDecimal totalShootingPercentage = BigDecimal.ZERO;
-
-    /**
-     * Totals shots, blocks, hits, and PIM of players on team.
-     * 
-     * @param player is Player object containing stats
-     */
-    private void tallyPhysicalityStats(BasePlayerStats player) {
-        totalShootingPercentage = totalShootingPercentage.add(player.getShootingPercentage());
-        totalBlocks += player.getBlocks();
-        totalHits += player.getHits();
-        totalPenaltyInMinutes += player.getPenaltyInMinutes();
-    }
-
-    private int totalTimeOnIce;
-    private int averagePlayerTimeOnIce;
-
-    /**
-     * Tally team time on ice stats.
-     * 
-     * @param player is Player object containing stats
-     */
-    private void tallyTimeOnIce(BasePlayerStats player) {
-        totalTimeOnIce += player.getTimeOnIce();
-        averagePlayerTimeOnIce += player.getAverageTimeOnIce();
-    }
-
-    private BigDecimal faceOffPercentage = BigDecimal.ZERO;
-    private int faceOffWins;
-
-    /**
-     * Tally team face-off stats
-     * 
-     * @param player is Player object containing stats
-     */
-    private void tallyFaceOffStats(BasePlayerStats player) {
-        faceOffPercentage = faceOffPercentage.add(player.getFaceOffPercentage());
-        faceOffWins += player.getFaceOffWins();
-    }
-
-    public List<BasePlayerStats> getTeamMembers() {
+    public List<BasicPlayerStats> getTeamMembers() {
         return teamMembers;
     }
 
