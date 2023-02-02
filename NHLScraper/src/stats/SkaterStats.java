@@ -11,13 +11,13 @@ import org.apache.logging.log4j.Logger;
 
 import main.NhlApp;
 import stats.refined.RefinedTeamStats;
-import stats.BasePlayerStats;
+import stats.BasicPlayerStats;
 
 public class SkaterStats {
     private static final Logger logger = LogManager.getLogger(SkaterStats.class);
 
-    private Map<String, List<BasePlayerStats>> baseTeams;
-    private List<BasePlayerStats> playerObjects;
+    private Map<String, List<BasicPlayerStats>> baseTeams;
+    private List<BasicPlayerStats> playerObjects;
 
     private List<BaseTeamStats> baseTeamStats;
     private List<RefinedTeamStats> refinedTeamStats;
@@ -28,7 +28,7 @@ public class SkaterStats {
      * 
      * @param argNhlPlayerObjects a list of player objects with stats to be compiled
      */
-    public SkaterStats(List<BasePlayerStats> argNhlPlayerObjects) {
+    public SkaterStats(List<BasicPlayerStats> argNhlPlayerObjects) {
         playerObjects = argNhlPlayerObjects;
         compileTeams();
         createNhlTeamStats();
@@ -40,9 +40,9 @@ public class SkaterStats {
      */
     private void compileTeams() {
         baseTeams = new HashMap<>();
-        List<BasePlayerStats> tempList;
+        List<BasicPlayerStats> tempList;
 
-        for (BasePlayerStats player : playerObjects) {
+        for (BasicPlayerStats player : playerObjects) {
             if (baseTeams.containsKey(player.getTeam())) {
                 tempList = baseTeams.get(player.getTeam());
                 tempList.add(player);
@@ -92,7 +92,7 @@ public class SkaterStats {
      */
     public void printAllPlayerRoster() {
         baseTeams.entrySet().stream().forEach(team -> {
-            for (BasePlayerStats player : team.getValue()) {
+            for (BasicPlayerStats player : team.getValue()) {
                 logger.info("Team:\t{} \tPlayer:\t{}", player.getTeam(), player);
             }
         });
@@ -108,8 +108,8 @@ public class SkaterStats {
      * @return List of PlayerStat objects featuring the name passed in the argument.
      *         This will include across all teams and free agency
      */
-    public List<BasePlayerStats> fetchAllStatsOnPlayer(String name) {
-        List<BasePlayerStats> playerStatsAcrossLeague = new ArrayList<>();
+    public List<BasicPlayerStats> fetchAllStatsOnPlayer(String name) {
+        List<BasicPlayerStats> playerStatsAcrossLeague = new ArrayList<>();
 
         for (RefinedTeamStats team : refinedTeamStats) {
             parseTeamForPlayer(name, playerStatsAcrossLeague, team);
@@ -128,9 +128,9 @@ public class SkaterStats {
      * @param team                    RefinedTeamStats object to be inspected for
      *                                player
      */
-    private void parseTeamForPlayer(String name, List<BasePlayerStats> playerStatsAcrossLeague,
+    private void parseTeamForPlayer(String name, List<BasicPlayerStats> playerStatsAcrossLeague,
             RefinedTeamStats team) {
-        for (BasePlayerStats player : team.getRawTeamStats().getTeamMembers()) {
+        for (BasicPlayerStats player : team.getRawTeamStats().getTeamMembers()) {
             if (player.toString().equalsIgnoreCase(name)) {
                 playerStatsAcrossLeague.add(player);
             }

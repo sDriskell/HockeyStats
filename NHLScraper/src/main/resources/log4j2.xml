@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
 	<Properties>
-		<Property name="format">%-5level %d [%t] %c:%M(%L): %m%n</Property>
+		<Property name="format">%-5level %d: %m%n</Property>
 	</Properties>
 	<Appenders>
 		<Console name="stdout" target="SYSTEM_OUT">

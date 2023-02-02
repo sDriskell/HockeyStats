@@ -11,7 +11,7 @@ import java.util.List;
  * @author sldri
  *
  */
-public class BasePlayerStats {
+public class BasicPlayerStats {
     private final String name;
     private final int age;
     private final String team;
@@ -50,7 +50,7 @@ public class BasePlayerStats {
      * 
      * @param argNhlPlayerStats
      */
-    public BasePlayerStats(List<String> argNhlPlayerStats) {
+    public BasicPlayerStats(List<String> argNhlPlayerStats) {
         // HEADER:
         // Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,PS,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,BLK,HIT,FOW,FOL,FO%,-9999
         // Sample:

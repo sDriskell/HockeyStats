@@ -35,7 +35,7 @@ public class HockeyReferenceScraper {
     private static final String SKATER_ADVANCED_ELEMENT_ID = "all_stats_adv_rs";
     private static final String GOALIE_ELEMENT_ID = "div_stats";
     
-    public void scrapeFiles() {
+    public static void scrapeFiles() {
         try {
             createCsvFile(TEAM_STANDINGS, TEAM_ELEMENT_ID, TEAM_STANDINGS_FILE_NAME);
 
@@ -53,7 +53,7 @@ public class HockeyReferenceScraper {
         LOG.info("Hockey Reference Site Scraped.");
     }
 
-    private void createCsvFile(String url, String elementId, String fileName)
+    private static void createCsvFile(String url, String elementId, String fileName)
             throws IOException {
         Document doc = Jsoup.connect(url).get();
 
