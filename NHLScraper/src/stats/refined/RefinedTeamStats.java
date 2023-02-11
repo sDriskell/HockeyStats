@@ -6,8 +6,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import stats.BasicPlayerStats;
-import stats.BaseTeamStats;
+import stats.BasicSkaterStats;
+import stats.BasicTeamStats;
 
 /**
  * Refines stats captured by TeamStatsRaw.class to create more detailed data on
@@ -19,20 +19,20 @@ import stats.BaseTeamStats;
 public class RefinedTeamStats {
     private static final Logger logger = LogManager.getLogger(RefinedTeamStats.class);
     
-    private BaseTeamStats baseTeamStats;
-    private Goals goals;
+    private BasicTeamStats baseTeamStats;
+    private Scoring goals;
 
-    public RefinedTeamStats(BaseTeamStats baseTeamStats) {
+    public RefinedTeamStats(BasicTeamStats baseTeamStats) {
         this.baseTeamStats = baseTeamStats;
         
-        goals = new Goals(baseTeamStats);
+        goals = new Scoring(baseTeamStats);
     }
     
-    public BaseTeamStats getRawTeamStats() {
+    public BasicTeamStats getRawTeamStats() {
         return baseTeamStats;
     }
     
-    public Goals getGoals() {
+    public Scoring getGoals() {
         return goals;
     }
     

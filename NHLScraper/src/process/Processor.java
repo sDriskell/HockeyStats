@@ -9,7 +9,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import stats.BasicPlayerStats;
+import stats.BasicSkaterStats;
 import stats.SkaterStats;
 
 /**
@@ -27,10 +27,9 @@ public class Processor {
     private List<List<String>> rawLeagueStandings = new ArrayList<>();
     private List<List<String>> rawGoalieStatistics = new ArrayList<>();
 
-    private List<BasicPlayerStats> playerObjects = new ArrayList<>();
+    private List<BasicSkaterStats> basicSkaterObjects = new ArrayList<>();
     private SkaterStats skaterStats;
 
-    private Map<String, String> teamNamesAndAbbv = new HashMap<>();
     private ProcessCsvFile processCsvFile = new ProcessCsvFile();
 
     /**
@@ -50,11 +49,11 @@ public class Processor {
         logger.info("Loading settings");
         // TODO: Create Settings
 
-        logger.info("Creating skater objects.");
-        createPlayerObjects(rawSkatersBasicStats);
+        logger.info("Creating basic, skater objects.");
+        createBasicSkaterObjects(rawSkatersBasicStats);     
 
         logger.info("Assigning players to teams.");
-        skaterStats = new SkaterStats(playerObjects);
+        skaterStats = new SkaterStats(basicSkaterObjects);  // TODO: modify to use Skater class instead
     }
 
     /**
@@ -79,37 +78,18 @@ public class Processor {
     }
 
     /**
-     * Creates a map from file name argument of team abbv name and full team name.
-     * 
-     * @param fileName name of file with team names being created
-     * @return Map<String, String> where key: abbv. team name and value: full team
-     *         name
-     * @throws IOException throws if file name not found
-     */
-    private Map<String, String> loadTeamNames(String fileName) throws IOException {
-        return processCsvFile.generateTeamMap(fileName);
-    }
-
-    /**
-     * Factory method making player and stats object(s).
-     * 
-     * @param argNhlPlayerStats is a list of player information
-     * @return NhlPlayerStats object with the arguments values added
-     */
-    private BasicPlayerStats createPlayerStatObject(List<String> argNhlPlayerStats) {
-        return new BasicPlayerStats(argNhlPlayerStats);
-    }
-
-    /**
      * Handles going through list of players and calling factory method for creating
-     * player object(s).
+     * basic skater object(s).
      * 
-     * @param nhlPlayersStats is a list of players with a list of player stats.
+     * @param basicSkaterStats is a list of players with a list of player stats.
      */
-    private void createPlayerObjects(List<List<String>> nhlPlayersStats) {
-        logger.info("Creating player objects using parsed csv file.");
-        for (List<String> player : nhlPlayersStats) {
-            playerObjects.add(createPlayerStatObject(player));
+    private void createBasicSkaterObjects(List<List<String>> basicSkaterStats) {
+        logger.info("Creating basic, skater objects using parsed csv file.");
+        for (List<String> player : basicSkaterStats) {
+            if (player == null) {
+                continue;
+            }
+            basicSkaterObjects.add(new BasicSkaterStats(player));
         }
     }
 
