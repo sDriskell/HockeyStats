@@ -7,8 +7,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import stats.BasicPlayerStats;
-import stats.BaseTeamStats;
+import stats.BasicSkaterStats;
+import stats.BasicTeamStats;
 
 /**
  * 
@@ -16,8 +16,8 @@ import stats.BaseTeamStats;
  * @author sldri
  *
  */
-public class Goals {
-    private static final Logger logger = LogManager.getLogger(Goals.class);
+public class Scoring {
+    private static final Logger logger = LogManager.getLogger(Scoring.class);
 
     private BigDecimal averagePlayerGoals = BigDecimal.ZERO;
     private BigDecimal medianPlayerGoals = BigDecimal.ZERO;
@@ -32,7 +32,7 @@ public class Goals {
      * 
      * @param team BaseTeamStats object that holds raw stats for creating goal data.
      */
-    public Goals(BaseTeamStats team) {
+    public Scoring(BasicTeamStats team) {
         logger.info("Generate goal data for {}", team);
 
         averagePlayerGoals =
@@ -52,17 +52,17 @@ public class Goals {
      * @param rawTeam TeamStatsRaw object containing skaters and related stats
      * @return BigDecimal value of median goals
      */
-    private BigDecimal generateMedianValue(BaseTeamStats rawTeam, String stat) {
+    private BigDecimal generateMedianValue(BasicTeamStats rawTeam, String stat) {
         int[] medianValues = new int[rawTeam.getTeamMembers().size()];
 
         if ("goals".equals(stat)) {
             for (int i = 0; i < rawTeam.getTeamMembers().size(); i++) {
-                medianValues[i] = rawTeam.getTeamMembers().get(i).getGoals();
+                medianValues[i] = rawTeam.getTeamMembers().get(i).goals;
             }
         }
         else if ("assists".equals(stat)) {
             for (int i = 0; i < rawTeam.getTeamMembers().size(); i++) {
-                medianValues[i] = rawTeam.getTeamMembers().get(i).getAssists();
+                medianValues[i] = rawTeam.getTeamMembers().get(i).assists;
             }
         }
         else {

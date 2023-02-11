@@ -7,8 +7,8 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class BaseTeamStats {
-    private static final Logger logger = LogManager.getLogger(BaseTeamStats.class);
+public class BasicTeamStats {
+    private static final Logger logger = LogManager.getLogger(BasicTeamStats.class);
 
     private int totalGoals;
     private int totalAssists;
@@ -32,7 +32,7 @@ public class BaseTeamStats {
     private BigDecimal faceOffPercentage = BigDecimal.ZERO;
     private int faceOffWins;
     
-    private List<BasicPlayerStats> teamMembers;
+    private List<BasicSkaterStats> teamMembers;
     private String teamName;
 
     /**
@@ -41,7 +41,7 @@ public class BaseTeamStats {
      * @param argTeamName    is a String name of the team
      * @param argTeamMembers is a list of team members on the team
      */
-    public BaseTeamStats(String argTeamName, List<BasicPlayerStats> argTeamMembers) {
+    public BasicTeamStats(String argTeamName, List<BasicSkaterStats> argTeamMembers) {
         logger.info("Generating team statistics.");
         teamName = argTeamName;
         teamMembers = argTeamMembers;
@@ -53,28 +53,28 @@ public class BaseTeamStats {
      * Creates all the total values of the team stats
      */
     private void tallyTeamStats() {
-        for (BasicPlayerStats player : teamMembers) {
-            totalGoals += player.getGoals();
-            totalAssists += player.getAssists();
-            totalShotsOnGoal += player.getShotsOnGoal();
-            totalPowerPlayAssists += player.getPowerPlayAssists();
-            totalPowerPlayGoals += player.getPowerPlayGoals();
-            totalEvenStrengthAssists += player.getEvenStrengthAssists();
-            totalEvenStrengthGoals += player.getEvenStrengthGoals();
+        for (BasicSkaterStats player : teamMembers) {
+            totalGoals += player.goals;
+            totalAssists += player.assists;
+            totalShotsOnGoal += player.shotsOnGoal;
+            totalPowerPlayAssists += player.powerPlayAssists;
+            totalPowerPlayGoals += player.powerPlayGoals;
+            totalEvenStrengthAssists += player.evenStrengthAssists;
+            totalEvenStrengthGoals += player.evenStrengthGoals;
             
-            totalPlusOrMinus += player.getPlusOrMinus();
-            totalPoints += player.getPoints();
-            totalPointsShared = totalPointsShared.add(player.getPointsShared());
+            totalPlusOrMinus += player.plusOrMinus;
+            totalPoints += player.points;
+            totalPointsShared = totalPointsShared.add(player.pointsShared);
             
-            totalShootingPercentage = totalShootingPercentage.add(player.getShootingPercentage());
-            totalBlocks += player.getBlocks();
-            totalHits += player.getHits();
-            totalPenaltyInMinutes += player.getPenaltyInMinutes();
+            totalShootingPercentage = totalShootingPercentage.add(player.shootingPercentage);
+            totalBlocks += player.blocks;
+            totalHits += player.hits;
+            totalPenaltyInMinutes += player.penaltyInMinutes;
             
-            totalTimeOnIce += player.getTimeOnIce();
-            averagePlayerTimeOnIce += player.getAverageTimeOnIce();
-            faceOffPercentage = faceOffPercentage.add(player.getFaceOffPercentage());
-            faceOffWins += player.getFaceOffWins();
+            totalTimeOnIce += player.timeOnIce;
+            averagePlayerTimeOnIce += player.averageTimeOnIce;
+            faceOffPercentage = faceOffPercentage.add(player.faceOffPercentage);
+            faceOffWins += player.faceOffWins;
         }
 
         // Smooth two stat fields over so they're an appropriate percentage
@@ -91,7 +91,7 @@ public class BaseTeamStats {
                 totalShootingPercentage.divide(new BigDecimal(teamMembers.size()), 2, RoundingMode.HALF_UP);
     }
 
-    public List<BasicPlayerStats> getTeamMembers() {
+    public List<BasicSkaterStats> getTeamMembers() {
         return teamMembers;
     }
 
