@@ -11,7 +11,7 @@ import java.util.List;
  * @author sldri
  *
  */
-public class BasicSkaterStats {
+public class BasicSkaterStats implements IPlayerStats {
     public final String name;
     public final int age;
     public final String team;
@@ -91,19 +91,6 @@ public class BasicSkaterStats {
 
     private int averageTimeOnIce() {
         return timeOnIce / gamesPlayed;
-    }
-    
-
-    /**
-     * Parses String object of percentage value into a BigDecimal.
-     * 
-     * @param playerStat List of players stats
-     * @param index      point in List to pull percentage stat
-     * @return BigDecimal value of percent
-     */
-    private BigDecimal convertToBigDecimal(String playerStat) {
-        return "".equals(playerStat) ? BigDecimal.ZERO
-                : BigDecimal.valueOf(Float.parseFloat(playerStat));
     }
 
     @Override

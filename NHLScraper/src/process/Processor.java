@@ -9,7 +9,11 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import stats.AdvancedSkaterStats;
 import stats.BasicSkaterStats;
+import stats.EStatistics;
+import stats.GoalieStats;
+import stats.IPlayerStats;
 import stats.SkaterStats;
 
 /**
@@ -28,6 +32,9 @@ public class Processor {
     private List<List<String>> rawGoalieStatistics = new ArrayList<>();
 
     private List<BasicSkaterStats> basicSkaterObjects = new ArrayList<>();
+    private List<AdvancedSkaterStats> advancedSkaterObjects = new ArrayList<>();
+    private List<GoalieStats> goalieObjects = new ArrayList<>();
+
     private SkaterStats skaterStats;
 
     private ProcessCsvFile processCsvFile = new ProcessCsvFile();
@@ -50,10 +57,11 @@ public class Processor {
         // TODO: Create Settings
 
         logger.info("Creating basic, skater objects.");
-        createBasicSkaterObjects(rawSkatersBasicStats);     
+        createBasicSkaterObjects(rawSkatersBasicStats);
 
         logger.info("Assigning players to teams.");
-        skaterStats = new SkaterStats(basicSkaterObjects);  // TODO: modify to use Skater class instead
+        skaterStats = new SkaterStats(basicSkaterObjects); // TODO: modify to use Skater class
+                                                           // instead
     }
 
     /**
@@ -85,11 +93,24 @@ public class Processor {
      */
     private void createBasicSkaterObjects(List<List<String>> basicSkaterStats) {
         logger.info("Creating basic, skater objects using parsed csv file.");
+        
         for (List<String> player : basicSkaterStats) {
             if (player == null) {
                 continue;
             }
             basicSkaterObjects.add(new BasicSkaterStats(player));
+        }
+    }
+    
+    // TODO: Breaks DRY, refactor.
+    private void createAdvancedSkaterObjects(List<List<String>> advancedSkaterStats) {
+        logger.info("Creating advanced, skater objects using parsed csv file.");
+        
+        for (List<String> player : advancedSkaterStats) {
+            if (player == null) {
+                continue;
+            }
+            advancedSkaterObjects.add(new AdvancedSkaterStats(player));
         }
     }
 

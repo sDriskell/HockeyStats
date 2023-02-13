@@ -6,7 +6,7 @@ import java.util.List;
 //Player,Age,Tm,Pos,GP,CF,CA,CF%,CF% rel,FF,FA,FF%,FF% rel,oiSH%,oiSV%,PDO,oZS%,dZS%,TOI/60,TOI(EV),TK,GV,E+/-,SAtt.,Thru%
 //Noel Acciari,31,STL,C,51,468,612,43.3,-3.7,374,437,46.1,-0.6,8.8,90.9,99.6,39.7,60.3,14:30,12:39,21,6,-0.9,111,59.5
 
-public class AdvancedSkaterStats {
+public class AdvancedSkaterStats implements IPlayerStats {
     public final String name;
     public final int age;
     public final String team;
@@ -72,15 +72,8 @@ public class AdvancedSkaterStats {
         percentageOfShotsOnNet = convertToBigDecimal(playerStats.get(24));
     }
 
-    /**
-     * Parses String object of percentage value into a BigDecimal.
-     * 
-     * @param playerStat List of players stats
-     * @param index      point in List to pull percentage stat
-     * @return BigDecimal value of percent
-     */
-    private BigDecimal convertToBigDecimal(String playerStat) {
-        return "".equals(playerStat) ? BigDecimal.ZERO
-                : BigDecimal.valueOf(Float.parseFloat(playerStat));
+    @Override
+    public String toString() {
+        return name;
     }
 }
