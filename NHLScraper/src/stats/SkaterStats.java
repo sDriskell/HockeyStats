@@ -17,7 +17,7 @@ public class SkaterStats {
     private Map<String, List<BasicSkaterStats>> baseTeams;
     private List<BasicSkaterStats> playerObjects;
 
-    private List<BasicTeamStats> baseTeamStats;
+    private List<BasicTeamStats> basicTeamStats;
     private List<RefinedTeamStats> refinedTeamStats;
 
     /**
@@ -58,12 +58,12 @@ public class SkaterStats {
      * Generates a list of team stat objects used to handle team stats and players
      */
     private void createBasicTeamStats() {
-        baseTeamStats = new ArrayList<>();
+        basicTeamStats = new ArrayList<>();
 
         baseTeams.entrySet().stream().forEach(team -> {
             logger.info(new StringBuilder("Team " + team.getKey() + " stats generated"));
             BasicTeamStats nhlTeamObjs = new BasicTeamStats(team.getKey(), team.getValue());
-            baseTeamStats.add(nhlTeamObjs);
+            basicTeamStats.add(nhlTeamObjs);
         });
     }
 
@@ -74,7 +74,7 @@ public class SkaterStats {
     private void refineNhlTeamStats() {
         refinedTeamStats = new ArrayList<>();
 
-        for (BasicTeamStats baseTeam : baseTeamStats) {
+        for (BasicTeamStats baseTeam : basicTeamStats) {
             refinedTeamStats.add(new RefinedTeamStats(baseTeam));
         }
     }
