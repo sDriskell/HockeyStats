@@ -35,10 +35,8 @@ public class Scoring {
     public Scoring(BasicTeamStats team) {
         logger.info("Generate goal data for {}", team);
 
-        averagePlayerGoals =
-                BigDecimal.valueOf(team.getTotalGoals() / team.getTeamMembers().size());
-        averagePlayerAssists =
-                BigDecimal.valueOf(team.getTotalAssists() / team.getTeamMembers().size());
+        averagePlayerGoals = BigDecimal.valueOf(team.getTotalGoals() / team.getTeamMembers().size());
+        averagePlayerAssists = BigDecimal.valueOf(team.getTotalAssists() / team.getTeamMembers().size());
 
         medianPlayerGoals = generateMedianValue(team, "goals");
         medianPlayerAssists = generateMedianValue(team, "assists");
@@ -83,8 +81,7 @@ public class Scoring {
      */
     private BigDecimal medianResults(int[] values) {
         if (values.length % 2 == 0) {
-            return BigDecimal
-                    .valueOf((values[values.length / 2] + values[values.length / 2 - 1]) / 2);
+            return BigDecimal.valueOf((values[values.length / 2] + values[values.length / 2 - 1]) / 2);
         }
         else {
             return BigDecimal.valueOf(values[values.length / 2]);

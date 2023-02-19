@@ -3,9 +3,11 @@ package main;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 
-import process.Processor;
+import factory.SkaterFactory;
+import process.HockeyReferenceScraper;
+
+import org.apache.log4j.LogManager;
 
 /**
  * Simple NHL tool to visualize statistical data from Hockey-Reference.com.
@@ -16,7 +18,9 @@ public class NhlApp {
     private static final Logger logger = LogManager.getLogger(NhlApp.class);
 
     public static void main(String... args) throws IOException {
+        logger.info("Scraping source.");
+        HockeyReferenceScraper.scrapeFiles();
+        
         logger.info("Starting stats processor object.");
-        Processor statProcessor = new Processor();
     }
 }

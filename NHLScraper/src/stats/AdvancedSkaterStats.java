@@ -61,12 +61,12 @@ public class AdvancedSkaterStats implements IPlayerStats {
         pdo = convertToBigDecimal(playerStats.get(15));
         offensiveZoneStartPercentage = convertToBigDecimal(playerStats.get(16));
         defensiveZoneStartPercentage = convertToBigDecimal(playerStats.get(17));
-        
+
         timeOnIceAllSituations = playerStats.get(18);
         timeOnIceEvenStrength = playerStats.get(19);
         takeaways = Integer.parseInt(playerStats.get(20));
         giveaways = Integer.parseInt(playerStats.get(21));
-        
+
         expectedPlusOrMinus = convertToBigDecimal(playerStats.get(22));
         totalShotsAttempted = Integer.parseInt(playerStats.get(23));
         percentageOfShotsOnNet = convertToBigDecimal(playerStats.get(24));

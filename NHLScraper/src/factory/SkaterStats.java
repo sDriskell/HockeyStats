@@ -1,4 +1,4 @@
-package stats;
+package factory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import stats.refined.RefinedTeamStats;
 import stats.BasicSkaterStats;
+import stats.BasicTeamStats;
 
 public class SkaterStats {
     private static final Logger logger = LogManager.getLogger(SkaterStats.class);
@@ -104,13 +105,12 @@ public class SkaterStats {
      * equal PlayerStats objects with similar name.
      * 
      * @param name                    String of player name to search for
-     * @param playerStatsAcrossLeague List of BasicSkaterStats objects that have similar
-     *                                name
+     * @param playerStatsAcrossLeague List of BasicSkaterStats objects that have
+     *                                similar name
      * @param team                    RefinedTeamStats object to be inspected for
      *                                player
      */
-    private void parseTeamForPlayer(String name, List<BasicSkaterStats> playerStatsAcrossLeague,
-            RefinedTeamStats team) {
+    private void parseTeamForPlayer(String name, List<BasicSkaterStats> playerStatsAcrossLeague, RefinedTeamStats team) {
         for (BasicSkaterStats player : team.getRawTeamStats().getTeamMembers()) {
             if (player.toString().equalsIgnoreCase(name)) {
                 playerStatsAcrossLeague.add(player);

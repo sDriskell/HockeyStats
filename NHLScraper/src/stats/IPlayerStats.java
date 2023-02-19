@@ -12,10 +12,9 @@ public interface IPlayerStats {
      * @return BigDecimal value of percent
      */
     default BigDecimal convertToBigDecimal(String playerStat) {
-        return "".equals(playerStat) ? BigDecimal.ZERO
-                : BigDecimal.valueOf(Float.parseFloat(playerStat));
+        return "".equals(playerStat) ? BigDecimal.ZERO : BigDecimal.valueOf(Float.parseFloat(playerStat));
     }
-    
+
     @Override
     public String toString();
 }

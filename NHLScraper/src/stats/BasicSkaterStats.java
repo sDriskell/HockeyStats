@@ -54,7 +54,8 @@ public class BasicSkaterStats implements IPlayerStats {
         // HEADER:
         // Player,Age,Tm,Pos,GP,G,A,PTS,+/-,PIM,PS,EV,PP,SH,GW,EV,PP,SH,S,S%,TOI,ATOI,BLK,HIT,FOW,FOL,FO%,-9999
         // Sample:
-        // Some Dude,31,STL,C,46,10,8,18,0,10,1.7,10,0,0,1,6,0,2,61,16.4,652,14:11,46,142,219,187,53.9,
+        // Some
+        // Dude,31,STL,C,46,10,8,18,0,10,1.7,10,0,0,1,6,0,2,61,16.4,652,14:11,46,142,219,187,53.9,
         name = playerStats.get(0);
         age = Integer.parseInt(playerStats.get(1));
         team = playerStats.get(2);
