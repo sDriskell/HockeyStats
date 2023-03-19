@@ -32,7 +32,7 @@ public class ProcessCsvFile {
      *         each being some form of statistical data
      * @throws IOException
      */
-    public List<List<String>> processCsvFile(String csvFileName) throws IOException {
+    public static List<List<String>> processCsvFile(String csvFileName) throws IOException {
         logger.info("Ingesting csv file -> " + csvFileName);
         List<List<String>> tempStatsHolder = new ArrayList<>();
 
@@ -60,8 +60,7 @@ public class ProcessCsvFile {
         logger.info("Intake of team csv file.");
 
         try (Stream<String> lines = Files.lines(Paths.get(csvFileName))) {
-            return lines.map(line -> line.split(","))
-                    .collect(Collectors.toMap(line -> line[0], line -> line[1]));
+            return lines.map(line -> line.split(",")).collect(Collectors.toMap(line -> line[0], line -> line[1]));
         }
     }
 }

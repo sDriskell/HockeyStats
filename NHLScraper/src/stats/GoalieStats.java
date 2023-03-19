@@ -11,65 +11,65 @@ public class GoalieStats implements IPlayerStats {
     public final String team;
     public final int gamesPlayed;
     public final int gamesStarted;
-    
+
     public final int wins;
     public final int losses;
     public final int overtimeLosses;
-    
+
     public final int goalsAgainst;
     public final int shotsAgainst;
     public final int saves;
-    
+
     public final BigDecimal savePercentage;
     public final BigDecimal goalsAgainstAverage;
     public final int shutouts;
     public final BigDecimal goaliePointsShared;
-    
+
     public final int minutes;
     public final int qualityStarts;
     public final BigDecimal qualityStartsPercentage;
     public final int reallyBadStarts;
-    
+
     public final int goalsAllowedPercentage;
     public final BigDecimal goalsSavedAboveAverage;
-    
+
     public final int goals;
     public final int assists;
     public final int points;
     public final int penaltyInMinutes;
-    
+
     public GoalieStats(List<String> goalie) {
         name = goalie.get(0);
-        age = Integer.parseInt(goalie.get(1));
+        age = handleInteger(goalie.get(1));
         team = goalie.get(2);
-        gamesPlayed = Integer.parseInt(goalie.get(3));
-        gamesStarted = Integer.parseInt(goalie.get(4));
-        
-        wins = Integer.parseInt(goalie.get(5));
-        losses = Integer.parseInt(goalie.get(6));
-        overtimeLosses = Integer.parseInt(goalie.get(7));
-        
-        goalsAgainst = Integer.parseInt(goalie.get(8));
-        shotsAgainst = Integer.parseInt(goalie.get(9));
-        saves = Integer.parseInt(goalie.get(10));
-        
+        gamesPlayed = handleInteger(goalie.get(3));
+        gamesStarted = handleInteger(goalie.get(4));
+
+        wins = handleInteger(goalie.get(5));
+        losses = handleInteger(goalie.get(6));
+        overtimeLosses = handleInteger(goalie.get(7));
+
+        goalsAgainst = handleInteger(goalie.get(8));
+        shotsAgainst = handleInteger(goalie.get(9));
+        saves = handleInteger(goalie.get(10));
+
         savePercentage = convertToBigDecimal(goalie.get(11));
         goalsAgainstAverage = convertToBigDecimal(goalie.get(12));
-        shutouts = Integer.parseInt(goalie.get(13));
+        shutouts = handleInteger(goalie.get(13));
         goaliePointsShared = convertToBigDecimal(goalie.get(14));
-        
-        minutes = Integer.parseInt(goalie.get(15));
-        qualityStarts = Integer.parseInt(goalie.get(16));
+
+        minutes = handleInteger(goalie.get(15));
+        qualityStarts = handleInteger(goalie.get(16));
         qualityStartsPercentage = convertToBigDecimal(goalie.get(17));
-        reallyBadStarts = Integer.parseInt(goalie.get(18));
-        
-        goalsAllowedPercentage = Integer.parseInt(goalie.get(19));
+        reallyBadStarts = handleInteger(goalie.get(18));
+
+        goalsAllowedPercentage = handleInteger(goalie.get(19));
         goalsSavedAboveAverage = convertToBigDecimal(goalie.get(20));
-        
-        goals = Integer.parseInt(goalie.get(21));
-        assists = Integer.parseInt(goalie.get(22));
-        points = Integer.parseInt(goalie.get(23));
-        penaltyInMinutes = Integer.parseInt(goalie.get(24));
+
+        goals = handleInteger(goalie.get(21));
+        assists = handleInteger(goalie.get(22));
+        points = handleInteger(goalie.get(23));
+        penaltyInMinutes = handleInteger(goalie.get(24));
     }
 
     @Override

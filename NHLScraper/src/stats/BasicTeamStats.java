@@ -17,21 +17,21 @@ public class BasicTeamStats {
     private int totalPowerPlayGoals;
     private int totalEvenStrengthAssists;
     private int totalEvenStrengthGoals;
-    
+
     private int totalPlusOrMinus;
     private int totalPoints;
     private BigDecimal totalPointsShared = BigDecimal.ZERO;
-    
+
     private int totalBlocks;
     private int totalHits;
     private int totalPenaltyInMinutes;
     private BigDecimal totalShootingPercentage = BigDecimal.ZERO;
-    
+
     private int totalTimeOnIce;
     private int averagePlayerTimeOnIce;
     private BigDecimal faceOffPercentage = BigDecimal.ZERO;
     private int faceOffWins;
-    
+
     private List<BasicSkaterStats> teamMembers;
     private String teamName;
 
@@ -61,16 +61,16 @@ public class BasicTeamStats {
             totalPowerPlayGoals += player.powerPlayGoals;
             totalEvenStrengthAssists += player.evenStrengthAssists;
             totalEvenStrengthGoals += player.evenStrengthGoals;
-            
+
             totalPlusOrMinus += player.plusOrMinus;
             totalPoints += player.points;
             totalPointsShared = totalPointsShared.add(player.pointsShared);
-            
+
             totalShootingPercentage = totalShootingPercentage.add(player.shootingPercentage);
             totalBlocks += player.blocks;
             totalHits += player.hits;
             totalPenaltyInMinutes += player.penaltyInMinutes;
-            
+
             totalTimeOnIce += player.timeOnIce;
             averagePlayerTimeOnIce += player.averageTimeOnIce;
             faceOffPercentage = faceOffPercentage.add(player.faceOffPercentage);
@@ -87,8 +87,7 @@ public class BasicTeamStats {
      */
     private void smoothStats() {
         averagePlayerTimeOnIce = averagePlayerTimeOnIce / teamMembers.size();
-        totalShootingPercentage =
-                totalShootingPercentage.divide(new BigDecimal(teamMembers.size()), 2, RoundingMode.HALF_UP);
+        totalShootingPercentage = totalShootingPercentage.divide(new BigDecimal(teamMembers.size()), 2, RoundingMode.HALF_UP);
     }
 
     public List<BasicSkaterStats> getTeamMembers() {

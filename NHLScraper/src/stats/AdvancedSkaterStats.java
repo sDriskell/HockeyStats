@@ -41,18 +41,18 @@ public class AdvancedSkaterStats implements IPlayerStats {
 
     public AdvancedSkaterStats(List<String> playerStats) {
         name = playerStats.get(0);
-        age = Integer.parseInt(playerStats.get(1));
+        age = handleInteger(playerStats.get(1));
         team = playerStats.get(2);
         position = playerStats.get(3);
-        gamesPlayed = Integer.parseInt(playerStats.get(4));
+        gamesPlayed = handleInteger(playerStats.get(4));
 
-        corsiForEvenStrength = Integer.parseInt(playerStats.get(5));
-        corsiAgainstEvenStrength = Integer.parseInt(playerStats.get(6));
+        corsiForEvenStrength = handleInteger(playerStats.get(5));
+        corsiAgainstEvenStrength = handleInteger(playerStats.get(6));
         corsiForPercentEvenStrength = convertToBigDecimal(playerStats.get(7));
         relativeCorsiPercentEvenStrength = convertToBigDecimal(playerStats.get(8));
 
-        fenwichForEvenStrength = Integer.parseInt(playerStats.get(9));
-        fenwichAgainstEvenStrength = Integer.parseInt(playerStats.get(10));
+        fenwichForEvenStrength = handleInteger(playerStats.get(9));
+        fenwichAgainstEvenStrength = handleInteger(playerStats.get(10));
         fenwichForPercentEvenStrength = convertToBigDecimal(playerStats.get(11));
         relativeFenwichForPercentage = convertToBigDecimal(playerStats.get(12));
 
@@ -61,14 +61,14 @@ public class AdvancedSkaterStats implements IPlayerStats {
         pdo = convertToBigDecimal(playerStats.get(15));
         offensiveZoneStartPercentage = convertToBigDecimal(playerStats.get(16));
         defensiveZoneStartPercentage = convertToBigDecimal(playerStats.get(17));
-        
+
         timeOnIceAllSituations = playerStats.get(18);
         timeOnIceEvenStrength = playerStats.get(19);
-        takeaways = Integer.parseInt(playerStats.get(20));
-        giveaways = Integer.parseInt(playerStats.get(21));
-        
+        takeaways = handleInteger(playerStats.get(20));
+        giveaways = handleInteger(playerStats.get(21));
+
         expectedPlusOrMinus = convertToBigDecimal(playerStats.get(22));
-        totalShotsAttempted = Integer.parseInt(playerStats.get(23));
+        totalShotsAttempted = handleInteger(playerStats.get(23));
         percentageOfShotsOnNet = convertToBigDecimal(playerStats.get(24));
     }
 
