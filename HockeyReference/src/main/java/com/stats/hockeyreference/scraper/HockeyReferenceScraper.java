@@ -1,7 +1,9 @@
-package process;
+package com.stats.hockeyreference.scraper;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Year;
+import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,10 +18,10 @@ public class HockeyReferenceScraper {
     private static final String TABLE_ROW = "tr";
     private static final String TABLE_CELL = "td";
 
-    private static final String TEAM_STANDINGS = "https://www.hockey-reference.com/leagues/NHL_2023_standings.html#site_menu_link";
-    private static final String SKATER_BASIC_STATS = "https://www.hockey-reference.com/leagues/NHL_2023_skaters.html";
-    private static final String SKATER_ADVANCED_STATS = "https://www.hockey-reference.com/leagues/NHL_2023_skaters-advanced.html";
-    private static final String GOALIE_STATS = "https://www.hockey-reference.com/leagues/NHL_2023_goalies.html";
+    private static final String TEAM_STANDINGS = "https://www.hockey-reference.com/leagues/NHL_%d_standings.html#site_menu_link";
+    private static final String SKATER_BASIC_STATS = "https://www.hockey-reference.com/leagues/NHL_%d_skaters.html";
+    private static final String SKATER_ADVANCED_STATS = "https://www.hockey-reference.com/leagues/NHL_%d_skaters-advanced.html";
+    private static final String GOALIE_STATS = "https://www.hockey-reference.com/leagues/NHL_%d_goalies.html";
 
     private static final String TEAM_STANDINGS_FILE_NAME = "nhlTeamStandings.csv";
     private static final String SKATER_BASIC_STATS_FILE_NAME = "nhlSkatersBasic.csv";
@@ -32,19 +34,33 @@ public class HockeyReferenceScraper {
     private static final String GOALIE_ELEMENT_ID = "div_stats";
 
     public static void scrapeFiles() {
+        Scanner scanner = new Scanner(System.in);
+        LOG.info("Enter a year: ");
+        
+        int year;
+        
         try {
-            createCsvFile(TEAM_STANDINGS, TEAM_ELEMENT_ID, TEAM_STANDINGS_FILE_NAME);
+            year = scanner.nextInt();
+        }
+        catch (Exception e){
+            LOG.warn("Incorrect year entry.  Defaulting to current year");
+            year = Year.now().getValue();
+        }
+        
+        try {
+            createCsvFile(String.format(TEAM_STANDINGS, year), TEAM_ELEMENT_ID, TEAM_STANDINGS_FILE_NAME);
 
-            createCsvFile(SKATER_BASIC_STATS, SKATER_BASIC_ELEMENT_ID, SKATER_BASIC_STATS_FILE_NAME);
+            createCsvFile(String.format(SKATER_BASIC_STATS, year), SKATER_BASIC_ELEMENT_ID, SKATER_BASIC_STATS_FILE_NAME);
 
-            createCsvFile(SKATER_ADVANCED_STATS, SKATER_ADVANCED_ELEMENT_ID, SKATER_ADVANCED_STATS_FILE_NAME);
+            createCsvFile(String.format(SKATER_ADVANCED_STATS, year), SKATER_ADVANCED_ELEMENT_ID, SKATER_ADVANCED_STATS_FILE_NAME);
 
-            createCsvFile(GOALIE_STATS, GOALIE_ELEMENT_ID, GOALIE_STATS_FILE_NAME);
+            createCsvFile(String.format(GOALIE_STATS, year), GOALIE_ELEMENT_ID, GOALIE_STATS_FILE_NAME);
         }
         catch (IOException e) {
             LOG.error("Exception occurred while scraping site(s).");
         }
         LOG.info("Hockey Reference Site Scraped.");
+        scanner.close();
     }
 
     private static void createCsvFile(String url, String elementId, String fileName) throws IOException {
