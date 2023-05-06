@@ -1,4 +1,4 @@
-package com.stats.hockeyreference.scraper;
+package process;
 
 import java.io.FileWriter;
 import java.io.IOException;
