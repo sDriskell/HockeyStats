@@ -1,0 +1,171 @@
+INFO  2023-04-02 07:36:16,918: Scraping source.
+INFO  2023-04-02 07:36:18,287: Hockey Reference Site Scraped.
+INFO  2023-04-02 07:36:18,287: Starting stats processor.
+INFO  2023-04-02 07:36:18,289: creating Skater objects.
+INFO  2023-04-02 07:36:18,292: Parsing basic csv data.
+INFO  2023-04-02 07:36:18,292: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-02 07:36:18,294: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-02 07:36:18,329: Creating skater objects.
+INFO  2023-04-02 07:36:18,352: Parsing advanced csv data.
+INFO  2023-04-02 07:36:18,352: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-02 07:36:18,352: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-02 07:36:18,382: Creating skater objects.
+INFO  2023-04-02 07:36:18,398: Parsing goalie csv data.
+INFO  2023-04-02 07:36:18,398: Processing file: nhlGoalies.csv
+INFO  2023-04-02 07:36:18,398: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-02 07:36:18,402: Creating skater objects.
+INFO  2023-04-02 07:36:18,404: Setting player objects to teams
+INFO  2023-04-09 07:26:57,787: Scraping source.
+INFO  2023-04-09 07:26:59,560: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:26:59,560: Starting stats processor.
+INFO  2023-04-09 07:26:59,560: creating Skater objects.
+INFO  2023-04-09 07:26:59,565: Parsing basic csv data.
+INFO  2023-04-09 07:26:59,565: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:26:59,566: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:26:59,599: Creating skater objects.
+INFO  2023-04-09 07:26:59,623: Parsing advanced csv data.
+INFO  2023-04-09 07:26:59,624: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:26:59,624: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:26:59,648: Creating skater objects.
+INFO  2023-04-09 07:26:59,664: Parsing goalie csv data.
+INFO  2023-04-09 07:26:59,665: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:26:59,665: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:26:59,666: Creating skater objects.
+INFO  2023-04-09 07:26:59,668: Setting player objects to teams
+INFO  2023-04-09 07:41:27,534: Scraping source.
+INFO  2023-04-09 07:41:33,031: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:41:33,031: Starting stats processor.
+INFO  2023-04-09 07:41:33,033: creating Skater objects.
+INFO  2023-04-09 07:41:33,037: Parsing basic csv data.
+INFO  2023-04-09 07:41:33,037: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:41:33,038: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:41:33,081: Creating skater objects.
+INFO  2023-04-09 07:41:33,105: Parsing advanced csv data.
+INFO  2023-04-09 07:41:33,105: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:41:33,105: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:41:33,125: Creating skater objects.
+INFO  2023-04-09 07:41:33,140: Parsing goalie csv data.
+INFO  2023-04-09 07:41:33,140: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:41:33,140: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:41:33,142: Creating skater objects.
+INFO  2023-04-09 07:41:33,143: Setting player objects to teams
+INFO  2023-04-09 07:41:44,802: Scraping source.
+INFO  2023-04-09 07:41:48,629: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:41:48,630: Starting stats processor.
+INFO  2023-04-09 07:41:48,630: creating Skater objects.
+INFO  2023-04-09 07:41:48,636: Parsing basic csv data.
+INFO  2023-04-09 07:41:48,637: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:41:48,638: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:41:48,679: Creating skater objects.
+INFO  2023-04-09 07:41:48,702: Parsing advanced csv data.
+INFO  2023-04-09 07:41:48,702: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:41:48,702: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:41:48,722: Creating skater objects.
+INFO  2023-04-09 07:41:48,738: Parsing goalie csv data.
+INFO  2023-04-09 07:41:48,738: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:41:48,739: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:41:48,740: Creating skater objects.
+INFO  2023-04-09 07:41:48,744: Setting player objects to teams
+INFO  2023-04-09 07:41:57,962: Scraping source.
+INFO  2023-04-09 07:42:01,865: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:42:01,865: Starting stats processor.
+INFO  2023-04-09 07:42:01,867: creating Skater objects.
+INFO  2023-04-09 07:42:01,870: Parsing basic csv data.
+INFO  2023-04-09 07:42:01,870: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:42:01,871: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:42:01,900: Creating skater objects.
+INFO  2023-04-09 07:42:01,925: Parsing advanced csv data.
+INFO  2023-04-09 07:42:01,925: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:42:01,926: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:42:01,955: Creating skater objects.
+INFO  2023-04-09 07:42:01,981: Parsing goalie csv data.
+INFO  2023-04-09 07:42:01,981: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:42:01,981: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:42:01,984: Creating skater objects.
+INFO  2023-04-09 07:42:01,987: Setting player objects to teams
+INFO  2023-04-09 07:42:17,682: Scraping source.
+WARN  2023-04-09 07:42:19,255: Incorrect year entry.  Defaulting to current year
+INFO  2023-04-09 07:42:20,536: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:42:20,536: Starting stats processor.
+INFO  2023-04-09 07:42:20,538: creating Skater objects.
+INFO  2023-04-09 07:42:20,544: Parsing basic csv data.
+INFO  2023-04-09 07:42:20,544: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:42:20,545: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:42:20,576: Creating skater objects.
+INFO  2023-04-09 07:42:20,597: Parsing advanced csv data.
+INFO  2023-04-09 07:42:20,598: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:42:20,598: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:42:20,619: Creating skater objects.
+INFO  2023-04-09 07:42:20,633: Parsing goalie csv data.
+INFO  2023-04-09 07:42:20,633: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:42:20,633: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:42:20,636: Creating skater objects.
+INFO  2023-04-09 07:42:20,638: Setting player objects to teams
+INFO  2023-04-09 07:59:45,491: Scraping source.
+INFO  2023-04-09 07:59:49,583: Hockey Reference Site Scraped.
+INFO  2023-04-09 07:59:49,583: Starting stats processor.
+INFO  2023-04-09 07:59:49,584: creating Skater objects.
+INFO  2023-04-09 07:59:49,587: Parsing basic csv data.
+INFO  2023-04-09 07:59:49,587: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 07:59:49,589: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 07:59:49,618: Creating skater objects.
+INFO  2023-04-09 07:59:49,644: Parsing advanced csv data.
+INFO  2023-04-09 07:59:49,644: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:59:49,644: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 07:59:49,668: Creating skater objects.
+INFO  2023-04-09 07:59:49,684: Parsing goalie csv data.
+INFO  2023-04-09 07:59:49,684: Processing file: nhlGoalies.csv
+INFO  2023-04-09 07:59:49,684: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 07:59:49,687: Creating skater objects.
+INFO  2023-04-09 07:59:49,690: Setting player objects to teams
+INFO  2023-04-09 08:00:59,798: Scraping source.
+INFO  2023-04-09 12:02:33,356: Hockey Reference Site Scraped.
+INFO  2023-04-09 12:02:33,356: Starting stats processor.
+INFO  2023-04-09 12:02:33,359: creating Skater objects.
+INFO  2023-04-09 12:02:33,363: Parsing basic csv data.
+INFO  2023-04-09 12:02:33,363: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 12:02:33,364: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 12:02:33,389: Creating skater objects.
+INFO  2023-04-09 12:02:33,416: Parsing advanced csv data.
+INFO  2023-04-09 12:02:33,417: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 12:02:33,417: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 12:02:33,437: Creating skater objects.
+INFO  2023-04-09 12:02:33,454: Parsing goalie csv data.
+INFO  2023-04-09 12:02:33,455: Processing file: nhlGoalies.csv
+INFO  2023-04-09 12:02:33,455: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 12:02:33,457: Creating skater objects.
+INFO  2023-04-09 12:02:33,459: Setting player objects to teams
+INFO  2023-04-09 12:23:43,499: Scraping source.
+INFO  2023-04-09 12:31:52,283: Enter a year: 
+WARN  2023-04-09 12:31:57,796: Incorrect year entry.  Defaulting to current year
+INFO  2023-04-09 12:32:23,093: Scraping source.
+INFO  2023-04-09 12:32:23,111: Enter a year: 
+INFO  2023-04-09 12:32:28,803: Hockey Reference Site Scraped.
+INFO  2023-04-09 12:32:28,803: Starting stats processor.
+INFO  2023-04-09 12:32:28,805: creating Skater objects.
+INFO  2023-04-09 12:32:28,813: Parsing basic csv data.
+INFO  2023-04-09 12:32:28,813: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-09 12:32:28,815: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-09 12:32:28,871: Creating skater objects.
+INFO  2023-04-09 12:32:28,916: Parsing advanced csv data.
+INFO  2023-04-09 12:32:28,916: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-09 12:32:28,916: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-09 12:32:28,958: Creating skater objects.
+INFO  2023-04-09 12:32:28,983: Parsing goalie csv data.
+INFO  2023-04-09 12:32:28,983: Processing file: nhlGoalies.csv
+INFO  2023-04-09 12:32:28,984: Ingesting csv file -> nhlGoalies.csv
+INFO  2023-04-09 12:32:28,987: Creating skater objects.
+INFO  2023-04-09 12:32:28,989: Setting player objects to teams
+INFO  2023-04-29 06:59:56,117: Scraping source.
+INFO  2023-04-29 06:59:56,135: Enter a year: 
+INFO  2023-04-29 07:00:04,530: Hockey Reference Site Scraped.
+INFO  2023-04-29 07:00:04,530: Starting stats processor.
+INFO  2023-04-29 07:00:04,531: creating Skater objects.
+INFO  2023-04-29 07:00:04,534: Parsing basic csv data.
+INFO  2023-04-29 07:00:04,534: Processing file: nhlSkatersBasic.csv
+INFO  2023-04-29 07:00:04,535: Ingesting csv file -> nhlSkatersBasic.csv
+INFO  2023-04-29 07:00:04,568: Creating skater objects.
+INFO  2023-04-29 07:00:04,600: Parsing advanced csv data.
+INFO  2023-04-29 07:00:04,600: Processing file: nhlSkatersAdvanced.csv
+INFO  2023-04-29 07:00:04,600: Ingesting csv file -> nhlSkatersAdvanced.csv
+INFO  2023-04-29 07:00:04,624: Creating skater objects.
