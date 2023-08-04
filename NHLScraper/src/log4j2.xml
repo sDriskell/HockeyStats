@@ -7,7 +7,7 @@
 		<Console name="stdout" target="SYSTEM_OUT">
 			<PatternLayout pattern="${format}" />
 		</Console>
-		<File name="logfile" fileName="nhl_log">
+		<File name="logfile" fileName="./logs/nhl_log">
 			<PatternLayout pattern="${format}" />
 		</File>
 	</Appenders>
