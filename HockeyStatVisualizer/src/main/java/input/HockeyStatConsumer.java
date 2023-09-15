@@ -56,7 +56,7 @@ public class HockeyStatConsumer {
                 LOG.info("Building stat object(s) for team: {}", team.get("Team"));
                 
                 elementStats.put(EStatTypes.STANDARD,
-                        new StandardTeamStats.Builder().teamName(team.get("Team"))
+                        new StandardTeamStats.Builder(team.get("Team"))
                                 .gamesPlayed(team.get("GP"))
                                 .timeOnIce(team.get("TOI"))
                                 .wins(team.get("W"))
