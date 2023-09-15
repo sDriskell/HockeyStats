@@ -5,17 +5,13 @@ import java.math.BigDecimal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/**
- * Helper class to handle the stat conversions from String to numerical value.
- * Used for multiple stat types.
- */
-public final class StatConverterHelper {
+public class StatConverterHelper {
     private static final Logger LOG = LogManager.getLogger(StatConverterHelper.class);
 
-    private static final Integer TIME_OF_PLAY = 60;
+    private static final Integer STANDARD_TIME_OF_PLAY = 60;
 
     private StatConverterHelper() {
-        // Empty constructor for Helper class
+        // This is an empty constructor to mask for a helper class.
     }
 
     /**
@@ -54,6 +50,6 @@ public final class StatConverterHelper {
             return BigDecimal.ZERO;
         }
 
-        return new BigDecimal(argStat * TIME_OF_PLAY).divide(argTimeOnIce);
+        return new BigDecimal(argStat * STANDARD_TIME_OF_PLAY).divide(argTimeOnIce);
     }
 }
