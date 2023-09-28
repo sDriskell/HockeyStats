@@ -71,10 +71,11 @@ public class HockeyStatConsumer {
     }
 
     /**
+     * Builds all the stat related objects associated with the team and adds them to a EnumMap.
      * 
-     * @param teamStats
-     * @param team
-     * @param elementStats
+     * @param teamStats Map object which all teams will be added to
+     * @param team CSVRecord which stats are extracted from
+     * @param elementStats single map with which each team stat is added to
      */
     private static void buildStatObjects(Map<String, Map<EStatTypes, IStats>> teamStats,
             CSVRecord team, Map<EStatTypes, IStats> elementStats) {
