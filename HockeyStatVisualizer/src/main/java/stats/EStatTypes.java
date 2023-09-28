@@ -1,0 +1,25 @@
+package stats;
+
+/**
+ * Types of Analytical stats used for Hockey.
+ */
+public enum EStatTypes {
+    STANDARD,
+    CORSI,
+    FENWICK,
+    SHOTS,
+    GOALS,
+    SCORING_CHANCES,
+    SCORING_CHANCE_SHOTS,
+    SCORING_CHANCE_GOALS,
+    HIGH_DANGER_SCORING_CHANCES,
+    HIGH_DANGER_SHOTS,
+    HIGH_DANGER_GOALS,
+    MEDIUM_DANGER_SCORING_CHANCES,
+    MEDIUM_DANGER_SHOTS,
+    MEDIUM_DANGER_GOALS,
+    LOW_DANGER_SCORING_CHANCES,
+    LOW_DANGER_SHOTS,
+    LOW_DANGER_GOALS,
+    PDO;
+}
