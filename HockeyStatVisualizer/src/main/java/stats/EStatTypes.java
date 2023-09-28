@@ -1,5 +1,8 @@
 package stats;
 
+/**
+ * Types of Analytical stats used for Hockey.
+ */
 public enum EStatTypes {
     STANDARD,
     CORSI,

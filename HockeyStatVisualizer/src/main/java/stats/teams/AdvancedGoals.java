@@ -6,7 +6,7 @@ import helpers.StatConverterHelper;
 import stats.IStats;
 
 /**
- * 
+ * Template to be used for different types of advanced analytics related to goal scoring.
  */
 public class AdvancedGoals implements IStats {
     private int scoringChanceGoalsFor;

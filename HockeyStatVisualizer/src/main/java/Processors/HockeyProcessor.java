@@ -22,6 +22,9 @@ public class HockeyProcessor {
         initiate();
     }
 
+    /**
+     * Begins process of creating stat objects to be used for analysis.
+     */
     private void initiate() {
         dataIntake = new HockeyDataIntake();
     }
