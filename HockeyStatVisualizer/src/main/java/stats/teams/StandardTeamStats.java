@@ -91,6 +91,11 @@ public class StandardTeamStats implements IStats {
         private int points;
         private BigDecimal pointPercentage;
 
+        /**
+         * Builder constructor for standard team stats.
+         * 
+         * @param argTeamName String value for the name of the team
+         */
         public Builder(String argTeamName) {
             teamName = argTeamName;
         }

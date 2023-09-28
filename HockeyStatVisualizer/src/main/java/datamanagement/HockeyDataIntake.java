@@ -31,7 +31,7 @@ public class HockeyDataIntake {
     private void createStatObjects() {
         try {
             LOG.info("Building team stats objects.");
-            teamStats = HockeyStatConsumer.generateStats(TEAM_FILE_NAME);
+            teamStats = HockeyStatConsumer.parseStats(TEAM_FILE_NAME);
         }
         catch (IOException e) {
             LOG.fatal("Stat file {} could not be created", TEAM_FILE_NAME);
